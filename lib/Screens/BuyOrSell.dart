@@ -7,21 +7,33 @@ class BuyOrSell extends StatelessWidget {
         title: Text("Dinex Daddy"),
       ),
       body: Center(
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            RaisedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/buy');
-              },
-              child: Text('Buy'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                RaisedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/buy');
+                  },
+                  child: Text('Buy'),
+                ),
+              ]
             ),
-            RaisedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/sell');
-              },
-              child: Text('Sell'),
+            Row (
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                RaisedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/sell');
+                  },
+                  child: Text('Sell'),
+                )
+              ],
             )
 
           ],

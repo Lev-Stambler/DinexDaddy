@@ -82,21 +82,24 @@ class _Sell extends State {
                   },
                   child: Text('Choose your end time'),
                 ),
-                Slider( 
-                  value: price,
-                  onChanged: 
-                  (newPrice) {
-                    setState(() {
-                      price = newPrice;
-                  });
-                  },
-                  semanticFormatterCallback: (double newValue) {
-                    return '${newValue.round()} dollars';
-                  },
-                  divisions: 20,
-                  label: "Choose your price",
-                  max: 20.0,
-                  min: 0.0,),
+                new Container(
+                  width: 500.0,
+                  child: Column(children: <Widget>[
+                    Text("Choose your price"),
+                    Slider( 
+                      value: price,
+                      onChanged: 
+                      (newPrice) {
+                        setState(() {
+                          price = newPrice;
+                      });
+                      },
+                      divisions: 40,
+                      label: '\$${price}',
+                      max: 20.0,
+                      min: 0.0,),
+                  ],),
+                ),
                 RaisedButton(
                   onPressed: () {
                     DataBase().addSeller(email, name, 

@@ -32,14 +32,9 @@ class App extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-<<<<<<< HEAD
-         '/buy': (context) => Buy(),
-        '/buyer-match': (context) => BuyerMatch(),
-=======
         // '/buy': (context) => Buy(),
         '/buy': (context) => BuyerMatch(),
         '/feedback': (context) => FeedbackForm(),
->>>>>>> 9c0e4190656d34e79b289dc29823380ba2d8c96d
       },
       title: 'Flutter Demo',
       theme: ThemeData(

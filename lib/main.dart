@@ -1,35 +1,58 @@
+import 'package:DinexDaddy/Screens/Buy.dart';
+import 'package:DinexDaddy/Screens/BuyOrSell.dart';
+import 'package:DinexDaddy/Screens/BuyerMatch.dart';
+import 'package:DinexDaddy/Screens/Sell.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(App(
+));
 
-class MyApp extends StatelessWidget {
-    InitializeApp(
-    apiKey: "YourApiKey",
-    authDomain: "YourAuthDomain",
-    databaseURL: "YourDatabaseUrl",
-    projectId: "YourProjectId",
-    storageBucket: "YourStorageBucket");
-  // This widget is the root of your application.
+class App extends StatelessWidget {  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/buy': (context) => Buy(),
+        '/buyer-match': (context) => BuyerMatch(),
+        '/sell': (context) => Sell(),
+      },
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Web Page Test ZZZ'),
+      home: BuyOrSell(),
     );
   }
 }
+// class MyApp extends StatelessWidget {
+//     InitializeApp(
+//     apiKey: "YourApiKey",
+//     authDomain: "YourAuthDomain",
+//     databaseURL: "YourDatabaseUrl",
+//     projectId: "YourProjectId",
+//     storageBucket: "YourStorageBucket");
+//   // This widget is the root of your application.
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Flutter Demo',
+//       theme: ThemeData(
+//         // This is the theme of your application.
+//         //
+//         // Try running your application with "flutter run". You'll see the
+//         // application has a blue toolbar. Then, without quitting the app, try
+//         // changing the primarySwatch below to Colors.green and then invoke
+//         // "hot reload" (press "r" in the console where you ran "flutter run",
+//         // or simply save your changes to "hot reload" in a Flutter IDE).
+//         // Notice that the counter didn't reset back to zero; the application
+//         // is not restarted.
+//         primarySwatch: Colors.blue,
+//       ),
+//       home: MyHomePage(title: 'Flutter Demo Web Page Test ZZZ'),
+//     );
+//   }
+// }
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);

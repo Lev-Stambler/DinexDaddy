@@ -28,9 +28,11 @@ class Buy extends StatefulWidget {
   }
  @override
   Widget build(BuildContext context) {
+    Color PrimaryColor = const Color(0xFFB71C1C);
     return Scaffold(
       appBar: AppBar(
         title: Text("Buyer Homepage"),
+        backgroundColor: PrimaryColor,
       ),
       body: Center(
         
@@ -38,6 +40,12 @@ class Buy extends StatefulWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget> [
+          Container(
+              height: 180,
+              width: 180,
+              child: Image.asset('lib/images/logo.png'),
+              padding: EdgeInsets.only(bottom: 50),
+              ),  
           Text("Choose your preferred time range:"),
           RangeSlider(
             values: selectedRange,
@@ -63,6 +71,7 @@ class Buy extends StatefulWidget {
               ));
               // Navigate back to confirm transaction
             },
+            child: Text('Submit'),
           ),
           ]
         ),

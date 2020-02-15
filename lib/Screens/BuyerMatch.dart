@@ -28,6 +28,7 @@ class _BuyerMatch extends State {
   _BuyerMatch(this.startTime, this.endTime);
   @override
   Widget build(BuildContext context) {
+    Color PrimaryColor = const Color(0xFFB71C1C);
     return FutureBuilder<List<Seller>>(
       future: buildList(), // function where you call your api
       builder: (BuildContext context, AsyncSnapshot<List<Seller>> snapshot) {  // AsyncSnapshot<Your object type>

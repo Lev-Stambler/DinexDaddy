@@ -7,5 +7,6 @@ class Seller {
   DateTime availableEnd;
   double price;
   String typeSell;
+  String location;
   Seller(this.name, this.email, this.price, this.availableStart, this.availableEnd, this.typeSell);
 }

@@ -19,6 +19,7 @@ class Buy extends StatefulWidget {
   var selectedRange = RangeValues(6,18);
   DateTime availbleEnd;
   DateTime availbleStart;
+  String selectType;
   String dropdownValue = '(No Preference)';
   _Buy() {
     availbleStart = new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day,
@@ -101,6 +102,7 @@ class Buy extends StatefulWidget {
                   
                   onPressed: (int index) {
                     setState(() {
+                      selectType = index == 0 ? "Dinex" : "Block";
                       for (int buttonIndex = 0; buttonIndex < _selections.length; buttonIndex++) {
                         if (buttonIndex == index) {
                         _selections[buttonIndex] = !_selections[buttonIndex];
@@ -115,7 +117,7 @@ class Buy extends StatefulWidget {
           RaisedButton(
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(
-                builder: (context) => BuyerMatch(availbleStart, availbleEnd, dropdownValue)
+                builder: (context) => BuyerMatch(availbleStart, availbleEnd, dropdownValue, selectType)
               ));
               // Navigate back to confirm transaction
             },

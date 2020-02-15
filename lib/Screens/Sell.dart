@@ -2,15 +2,24 @@ import 'package:DinexDaddy/Classes/Database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
-class Sell extends State {
+class Sell extends StatefulWidget {
+  Sell() {
+    // email = _email;
+    // name = _name;
+    // price = 8.0;
+  }
+  @override
+  _Sell createState() {
+    return _Sell();
+  }
+}
+class _Sell extends State {
   String email;
   double price;
   String name;
   DateTime availbleEnd;
-  Sell(String _email, String _name) {
-    email = _email;
-    name = _name;
-    price = 8.0;
+  _Sell() {
+    price = 7.5;
   }
  @override
   Widget build(BuildContext context) {
@@ -37,7 +46,9 @@ class Sell extends State {
                     hintText: 'Enter email'
                   ),
                   onChanged: (String val) {
-                    email = val;
+                    setState(() {
+                      email = val;
+                    });
                   },
                 ),
               ),

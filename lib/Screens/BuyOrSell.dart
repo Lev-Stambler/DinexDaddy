@@ -33,7 +33,7 @@ class BuyOrSell extends StatelessWidget {
                 RaisedButton(
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => Sell(email, name))
+                      builder: (context) => Sell())
                     );
                   },
                   child: Text('Sell'),

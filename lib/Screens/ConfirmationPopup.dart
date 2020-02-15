@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:smooth_star_rating/smooth_star_rating.dart';
+
+
 _confirmResult(bool isYes, BuildContext context) {
   if (isYes) {
-    
+    Text("Your transaction has been processed. You should have received an email");
   }
 
 }
@@ -17,15 +20,23 @@ class ConfirmationDialog {
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text(description)
+                Text(description),
+                SmoothStarRating(
+                rating: rating,
+                size: 45,
+                starCount: 5,
+                onRatingChanged: (value) {
+                  setState(() {
+                    rating = value;
+                  });
+                )
               ],
             ),
           ),
           actions: <Widget>[
             FlatButton(
-              onPressed: () => confirmResult(),
-              child: Text("cancel"),
-
+              onPressed: () => _confirmResult(true, context),
+              child: Text("Confirm"),
             )
           ]
         );

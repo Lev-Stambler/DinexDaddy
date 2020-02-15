@@ -7,12 +7,5 @@ class Seller {
   DateTime availableEnd;
   double price;
   String typeSell;
-  Seller(String _name, String _email, double _price, DateTime _availableStart, DateTime _availableEnd, String _typeSell){
-    name = name;
-    email = email;
-    price = price;
-    availableStart = _availableStart;
-    availableEnd = _availableEnd;
-    typeSell = _typeSell;
-  }
+  Seller(this.name, this.email, this.price, this.availableStart, this.availableEnd, this.typeSell);
 }

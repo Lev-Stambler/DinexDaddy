@@ -7,10 +7,10 @@ class BuyerMatch extends StatelessWidget {
   static var now = DateTime.now();
   static var earlier = DateTime.parse("1969-07-20 20:18:04Z");
   List<Seller> Sellers = [
-    Seller("pp", "pp@smol.com", 10, earlier, now, "Block")
+    Seller("pp", "TEST2@smol.com", 10, earlier, now, "Block")
   ];
   List<ListView> ListToDisplay = [];
-  buildList(){
+  buildList() {
     DB.getSellers(DateTime.parse("1970-07-20 20:18:04Z"), DateTime.parse("1971-07-20 20:18:04Z"));
 
 

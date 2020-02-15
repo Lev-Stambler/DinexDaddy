@@ -52,7 +52,6 @@ class _BuyerMatch extends State {
                 shrinkWrap: true,
                 padding: EdgeInsets.all(15.0),
                 children: snapshot.data.map((seller) {
-                  print(seller.typeSell);
                   return SellerListTiles.getTile(seller);
                 }).toList()
               ),

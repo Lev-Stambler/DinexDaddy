@@ -15,7 +15,7 @@ class Buy extends StatefulWidget {
 }
 
  class _Buy extends State {
-
+  List<bool> _selections = [false,false];
   var selectedRange = RangeValues(6,18);
   DateTime availbleEnd;
   DateTime availbleStart;
@@ -64,6 +64,28 @@ class Buy extends StatefulWidget {
             
             divisions: 24,
           ),
+          Column(children: <Widget>[
+                  Text("Select either Dinex or Blocks to buy"),
+                  ToggleButtons(
+                  children: [
+                    Icon(Icons.attach_money),
+                    Icon(Icons.fastfood),
+                  ],
+                  isSelected: _selections,
+                  
+                  onPressed: (int index) {
+                    setState(() {
+                      for (int buttonIndex = 0; buttonIndex < _selections.length; buttonIndex++) {
+                        if (buttonIndex == index) {
+                        _selections[buttonIndex] = !_selections[buttonIndex];
+                        } else {
+                          _selections[buttonIndex] = false;
+                        }
+                      } 
+                    });
+                  }
+                ),
+                ],),
           RaisedButton(
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(

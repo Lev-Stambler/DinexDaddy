@@ -3,9 +3,9 @@ import '../Classes/Seller.dart';
 
 class BuyerMatch extends StatelessWidget {
   List<Seller> Sellers = [
-    Seller("pp", "pp@smol.com", 10, 15),
+    // Seller("pp", "pp@smol.com", 10, 15),
     
-    Seller("shSmol", "pp@smol.com", 1, 5),
+    // Seller("shSmol", "pp@smol.com", 1, 5),
   ];
   List<ListView> ListToDisplay = [];
   buildList(){

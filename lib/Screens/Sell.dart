@@ -1,4 +1,5 @@
 import 'package:DinexDaddy/Classes/Database.dart';
+import 'package:DinexDaddy/Classes/Seller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
@@ -19,6 +20,7 @@ class _Sell extends State {
   String name;
   var selectedRange = RangeValues(6,18);
   DateTime availbleEnd;
+  DateTime availbleStart;
   _Sell() {
     price = 7.5;
   }
@@ -67,22 +69,6 @@ class _Sell extends State {
                     },
                   ),
                 ),
-                RaisedButton(
-                  onPressed: () {
-                    DatePicker.showTimePicker(context,
-                      showTitleActions: true,
-                      // minTime: DateTime.now(),
-                      // maxTime: DateTime(2021),
-                      onChanged: (date) {
-                        print('change $date');
-                      }, onConfirm: (date) {
-                        availbleEnd = date;
-                        print('confirm $date');
-                      }, currentTime: DateTime.now(), locale: LocaleType.en
-                    );
-                  },
-                  child: Text('Choose your end time'),
-                ),
                 new Container(
                   width: 500.0,
                   child: Column(children: <Widget>[
@@ -106,7 +92,13 @@ class _Sell extends State {
                       max: 24,
                       labels: RangeLabels("${selectedRange.start}:00","${selectedRange.end}:00"),
                       onChanged: (RangeValues newRange) {
-                        setState(() => selectedRange = newRange);
+                        setState(() {
+                          selectedRange = newRange;
+                          availbleStart = new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day,
+                                                     selectedRange.start.round());
+                          availbleEnd = new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day,
+                                                     selectedRange.end.round());
+                        });
                       },
                       semanticFormatterCallback: (RangeValues rangeValues) {
                         return '${rangeValues.start.round()} - ${rangeValues.end.round()}  dollars';
@@ -117,16 +109,16 @@ class _Sell extends State {
                 ),
                 RaisedButton(
                   onPressed: () {
-                    DataBase().addSeller(email, name, 
-                      DateTime.now(), availbleEnd, "Block", price);
+                    Seller s  = Seller(name, email, price, availbleStart, availbleEnd, "Block");
+                    DataBase().addSeller(s);
                     Navigator.pushNamed(context, '/buy');
                   },
                   child: Text('Block'),
                 ),
                 RaisedButton(
                   onPressed: () {
-                    DataBase().addSeller(email, name, 
-                      DateTime.now(), availbleEnd, "Dinex", price);
+                    Seller s  = Seller(name, email, price, availbleStart, availbleEnd, "Dinex");
+                    DataBase().addSeller(s);
                     Navigator.pushNamed(context, '/sell');
                   },
                   child: Text('Dinex'),

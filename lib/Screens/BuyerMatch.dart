@@ -2,6 +2,7 @@ import 'package:DinexDaddy/Screens/Sell.dart';
 import 'package:flutter/material.dart';
 import '../Classes/Seller.dart';
 import '../Classes/Database.dart';
+import '../Classes/BuyerList.dart';
 
 class BuyerMatch extends StatefulWidget {
   DateTime startTime;
@@ -36,20 +37,16 @@ class _BuyerMatch extends State {
             if (snapshot.hasError)
               return Center(child: Text('Error: ${snapshot.error}'));
             else
-              return Scaffold(body: Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Row (
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: snapshot.data.map((seller) {
-                        return SellerShow(seller);
-                      }).toList()
-                    )]
+              return Center(
+                child: Scaffold(body: Center(
+                child: ListView(
+                          children: snapshot.data.map((seller) {
+                          return SellerListTiles.getTile(seller);
+                        }).toList()
+                      ),
+                    )
                   )
-                ));
+                );
               }
       },
     );

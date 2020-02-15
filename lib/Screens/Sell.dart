@@ -115,7 +115,7 @@ class _Sell extends State {
                   onPressed: () {
                     Seller s  = new Seller(name, email, price, availbleStart, availbleEnd, "Block");
                     DataBase().addSeller(s);
-                    Navigator.pushNamed(context, '/buy');
+                    showAlertDialog(context);
                   },
                   child: Text('Block'),
                 ),
@@ -124,7 +124,7 @@ class _Sell extends State {
                     print(name);
                     Seller s  = new Seller(name, email, price, availbleStart, availbleEnd, "Dinex");
                     DataBase().addSeller(s);
-                    Navigator.pushNamed(context, '/sell');
+                    showAlertDialog(context);
                   },
                   child: Text('Dinex'),
                 )
@@ -142,4 +142,30 @@ class _Sell extends State {
       ),
     );
   } 
+}
+
+showAlertDialog(BuildContext context) {
+
+  // set up the button
+  Widget okButton = FlatButton(
+    child: Text("OK"),
+    onPressed: () { },
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("Confirmation"),
+    content: Text("Congrats! You are now a listed seller"),
+    actions: [
+      okButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }

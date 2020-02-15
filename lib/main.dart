@@ -3,6 +3,12 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+    InitializeApp(
+    apiKey: "YourApiKey",
+    authDomain: "YourAuthDomain",
+    databaseURL: "YourDatabaseUrl",
+    projectId: "YourProjectId",
+    storageBucket: "YourStorageBucket");
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -20,7 +26,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Demo Web Page Test ZZZ'),
     );
   }
 }

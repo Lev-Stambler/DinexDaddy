@@ -1,7 +1,9 @@
 import 'package:DinexDaddy/Classes/Database.dart';
 import 'package:DinexDaddy/Classes/Seller.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+
 
 class Sell extends StatefulWidget {
   Sell() {
@@ -18,6 +20,7 @@ class _Sell extends State {
   String email;
   double price;
   String name;
+  String dropdownValue = '(No Preference)';
   List<bool> _selections = [false,false];
 
   var selectedRange = RangeValues(6,18);
@@ -82,6 +85,32 @@ class _Sell extends State {
                       name = val;
                     },
                   ),
+                ),
+                DropdownButton<String>(
+                  value: dropdownValue,
+                  icon: Icon(Icons.place),
+                  iconSize: 24,
+                  elevation: 16,
+                  style: TextStyle(
+                    color: PrimaryColor
+                  ),
+                  underline: Container(
+                    height: 2,
+                    color: PrimaryColor,
+                  ),
+                  onChanged: (String newValue) {
+                    setState(() {
+                      dropdownValue = newValue;
+                    });
+                  },
+                  items: <String>['(No Preference)','CUC', 'Tepper', 'Resnik', 'Entropy','UG', 'Wean', 'NSH', 'Posner']
+                    .map<DropdownMenuItem<String>>((String _value) {
+                      return DropdownMenuItem<String>(
+                        value: _value,
+                        child: Text(_value),
+                      );
+                    })
+                    .toList(),
                 ),
                 new Container(
                   width: 500.0,

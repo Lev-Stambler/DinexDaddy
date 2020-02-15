@@ -65,6 +65,7 @@ class Buy extends StatefulWidget {
               ));
               // Navigate back to confirm transaction
             },
+            child: Text('Submit'),
           ),
           ]
         ),

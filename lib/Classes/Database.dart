@@ -9,15 +9,25 @@ class DataBase{
   DataBase() {
     store = firestore();
   }
-  addSeller(Seller s){
-    store.collection('sellers').add({
+  addSeller(Seller s) async {
+    fs.QuerySnapshot refs = await store.collection('sellers').where("email", "==", s.email).get();
+    var o = {
       "email": s.email,
       "name": s.name,
       "availableStart": s.availableStart,
       "availableEnd": s.availableEnd,
       "typeSell": s.typeSell,
       "price": s.price,
-    });
+    };
+    if (refs.empty)
+      store.collection('sellers').add(o);
+    else {
+      refs.forEach((user) {
+        print(user.id);
+        fs.DocumentReference doc = store.collection("sellers").doc(user.id);
+        doc.update(data: o);
+      });
+    }
   }
 
   Future<List<Seller>> getSellers(DateTime buyerStart, DateTime buyerEnd, String typeSell) async{

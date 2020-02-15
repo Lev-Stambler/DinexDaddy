@@ -175,7 +175,7 @@ class _Sell extends State {
               RaisedButton(
                 onPressed: () {
                   String typeUsed = _selections[0] ? "Dinex" : "Block";
-                  Seller s  = new Seller(name, email, price, availbleStart, availbleEnd, typeUsed);
+                  Seller s  = new Seller(name, email, price, availbleStart, availbleEnd, typeUsed, dropdownValue);
                   DataBase().addSeller(s);
                   showAlertDialog(context);
                 },

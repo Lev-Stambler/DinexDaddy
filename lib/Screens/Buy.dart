@@ -19,6 +19,7 @@ class Buy extends StatefulWidget {
   var selectedRange = RangeValues(6,18);
   DateTime availbleEnd;
   DateTime availbleStart;
+  String dropdownValue = '(No Preference)';
   _Buy() {
     availbleStart = new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day,
                                 selectedRange.start.round());
@@ -46,6 +47,32 @@ class Buy extends StatefulWidget {
               child: Image.asset('lib/images/logo.png'),
               padding: EdgeInsets.only(bottom: 50),
               ),  
+          DropdownButton<String>(
+            value: dropdownValue,
+            icon: Icon(Icons.place),
+            iconSize: 24,
+            elevation: 16,
+            style: TextStyle(
+              color: PrimaryColor
+            ),
+            underline: Container(
+              height: 2,
+              color: PrimaryColor,
+            ),
+            onChanged: (String newValue) {
+              setState(() {
+                dropdownValue = newValue;
+              });
+            },
+            items: <String>['(No Preference)','CUC', 'Tepper', 'Resnik', 'Entropy','UG', 'Wean', 'NSH', 'Posner']
+              .map<DropdownMenuItem<String>>((String _value) {
+                return DropdownMenuItem<String>(
+                  value: _value,
+                  child: Text(_value),
+                );
+              })
+              .toList(),
+          ),
           Text("Choose your preferred time range:"),
           RangeSlider(
             values: selectedRange,
@@ -61,13 +88,12 @@ class Buy extends StatefulWidget {
                                             selectedRange.end.round());
               });
             },
-            
             divisions: 24,
           ),
           RaisedButton(
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(
-                builder: (context) => BuyerMatch(availbleStart, availbleEnd)
+                builder: (context) => BuyerMatch(availbleStart, availbleEnd, dropdownValue)
               ));
               // Navigate back to confirm transaction
             },

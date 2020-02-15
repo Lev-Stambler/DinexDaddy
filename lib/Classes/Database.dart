@@ -18,6 +18,7 @@ class DataBase{
       "availableEnd": s.availableEnd,
       "typeSell": s.typeSell,
       "price": s.price,
+      "location": s.location
     };
     if (refs.empty)
       store.collection('sellers').add(o);
@@ -30,7 +31,7 @@ class DataBase{
     }
   }
 
-  Future<List<Seller>> getSellers(DateTime buyerStart, DateTime buyerEnd, String typeSell) async{
+  Future<List<Seller>> getSellers(DateTime buyerStart, DateTime buyerEnd, String typeSell, String location) async{
     // .where("availableEnd", '<=', buyerEnd)
     fs.QuerySnapshot refs = await store.collection('sellers').where("availableStart", '<=', buyerStart).where("typeSell", "==", typeSell).get();
     List<Seller> sellers = [];
@@ -39,11 +40,14 @@ class DataBase{
       if (user.containsKey("availableEnd") && user.containsKey("name")
           && user.containsKey("email") && user.containsKey("availableStart")
           && user.containsKey("availableEnd")
-          && user.containsKey("price") &&
+          && user.containsKey("price") && user.containsKey("location") &&
           cast<DateTime>(user["availableEnd"]).compareTo(buyerEnd) >= 0) {
-        Seller s = new Seller(user["name"].toString(), user["email"].toString(), cast<double>(user["price"].toString()),
-          cast<DateTime>(user["availableStart"].toString()), cast<DateTime>(user["availableEnd"]), user["typeSell"].toString());
-        sellers.add(s);
+        if (location == "(No Preference)" || user["location"].toString() == location) {
+          Seller s = new Seller(user["name"].toString(), user["email"].toString(), cast<double>(user["price"].toString()),
+            cast<DateTime>(user["availableStart"].toString()), cast<DateTime>(user["availableEnd"]), user["typeSell"].toString(),
+            user["location"].toString());
+          sellers.add(s);
+        }
       }
     });
     return sellers;

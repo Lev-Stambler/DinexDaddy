@@ -7,25 +7,28 @@ import '../Classes/BuyerList.dart';
 class BuyerMatch extends StatefulWidget {
   DateTime startTime;
   DateTime endTime;
+  String location;
 
-  BuyerMatch(this.startTime, this.endTime);
+  BuyerMatch(this.startTime, this.endTime, this.location);
   @override
   _BuyerMatch createState() {
-    return _BuyerMatch(startTime, endTime);
+    return _BuyerMatch(startTime, endTime, location);
   }
 }
 class _BuyerMatch extends State {
   DataBase db = DataBase();
   DateTime startTime;
   DateTime endTime;
+  String blockType = "Block";
+  String location = "(No Preference)";
   List<Seller> Sellers = [];
 
   Future<List<Seller>> buildList() async {
-    Sellers = await db.getSellers(startTime, endTime, "Block");
+    Sellers = await db.getSellers(startTime, endTime, blockType, location);
     return Sellers;
   }
 
-  _BuyerMatch(this.startTime, this.endTime);
+  _BuyerMatch(this.startTime, this.endTime, this.location);
   @override
   Widget build(BuildContext context) {
     Color PrimaryColor = const Color(0xFFB71C1C);

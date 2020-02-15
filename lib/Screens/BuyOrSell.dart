@@ -26,6 +26,12 @@ class BuyOrSell extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            Container(
+              height: 300,
+              width: 300,
+              child: Image.asset('lib/images/logo.png'),
+              padding: EdgeInsets.only(bottom: 50),
+              ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,

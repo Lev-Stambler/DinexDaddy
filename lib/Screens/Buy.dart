@@ -1,3 +1,4 @@
+import 'package:DinexDaddy/Screens/BuyerMatch.dart';
 import 'package:flutter/material.dart';
 class Buy extends StatefulWidget {
 
@@ -57,10 +58,11 @@ class Buy extends StatefulWidget {
           ),
           RaisedButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/buyer-match');
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) => BuyerMatch(availbleStart, availbleEnd)
+              ));
               // Navigate back to confirm transaction
             },
-            child: Text('Buy'),
           ),
           ]
         ),

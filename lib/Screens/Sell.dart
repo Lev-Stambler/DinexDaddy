@@ -23,7 +23,9 @@ class _Sell extends State {
   String dropdownValue = '(No Preference)';
   List<bool> _selections = [false,false];
   bool _validate = true;
+  bool _validate2 = true;
   var _text = TextEditingController(); 
+  var _text2 = TextEditingController(); 
 
   var selectedRange = RangeValues(6,18);
   DateTime availbleEnd;
@@ -72,9 +74,9 @@ class _Sell extends State {
                 margin: const EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child:
                 new TextField(
-                  controller: _text,
+                  controller: _text2,
                   decoration: InputDecoration(
-                    errorText: !_validate ? 'Email Can\'t Be empty' : null,
+                    errorText: !_validate2 ? 'Email Can\'t Be empty' : null,
                     border: OutlineInputBorder(),
                     hintText: 'Enter email'
                     
@@ -192,8 +194,9 @@ class _Sell extends State {
                 onPressed: () {
                   setState(() {
                   _text.text.isEmpty ? _validate = false : _validate = true;
+                  _text2.text.isEmpty ? _validate2 = false : _validate2 = true;
                   });
-                  if (_validate) {
+                  if (_validate && _validate2) {
                     String typeUsed = _selections[0] ? "Dinex" : "Block";
                     Seller s  = new Seller(name, email, price, availbleStart, availbleEnd, typeUsed, dropdownValue);
                     DataBase().addSeller(s);

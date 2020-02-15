@@ -46,6 +46,8 @@ class _BuyerMatch extends State {
         } else{
             if (snapshot.hasError)
               return Center(child: Text('Error: ${snapshot.error}'));
+            else if (!snapshot.hasData || snapshot.data.length == 0)
+              return Center(child: Text("No sellers found :("),);
             else
               return Center(
                 child: ListView(

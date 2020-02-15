@@ -32,8 +32,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        // '/buy': (context) => Buy(),
-        '/buy': (context) => BuyerMatch(),
+        '/buy': (context) => Buy(),
         '/feedback': (context) => FeedbackForm(),
       },
       title: 'Flutter Demo',

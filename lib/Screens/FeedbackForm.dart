@@ -56,7 +56,7 @@ class _FeedbackForm extends State<FeedbackForm> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: Text('Home'),
+                  child: Text('Submit'),
                 )
               ],
             ),

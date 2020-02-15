@@ -29,7 +29,7 @@ class Final extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, '/buy-or-sell');
               },
-              child: Text('Submit'),
+              child: Text('Home'),
             )
           ],
         ) 

@@ -8,16 +8,15 @@ class Final extends StatelessWidget {
         title: Text("Confirmation Page"),
       ),
       body: Center(
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            RaisedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/buyer-match');
-              },
-              child: Text('Back'),
-            ),
+            Text('Transaction Confirmed', 
+            style: TextStyle(fontWeight: FontWeight.bold),),
+            Text('Meet With:'), 
+            Text('Location:'),
+            Text('Time:'),
             RaisedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/buy-or-sell');

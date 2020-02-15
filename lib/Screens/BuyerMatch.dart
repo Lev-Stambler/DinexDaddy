@@ -29,7 +29,8 @@ class _BuyerMatch extends State {
   @override
   Widget build(BuildContext context) {
     Color PrimaryColor = const Color(0xFFB71C1C);
-    return FutureBuilder<List<Seller>>(
+    return Scaffold(
+      body: FutureBuilder<List<Seller>>(
       future: buildList(), // function where you call your api
       builder: (BuildContext context, AsyncSnapshot<List<Seller>> snapshot) {  // AsyncSnapshot<Your object type>
         if(snapshot.connectionState == ConnectionState.waiting){
@@ -38,20 +39,16 @@ class _BuyerMatch extends State {
             if (snapshot.hasError)
               return Center(child: Text('Error: ${snapshot.error}'));
             else
-              return Scaffold(
-              body:Row(
-                children: <Widget>[
-                Center(
+              return Center(
                   child: ListView(
                           children: snapshot.data.map((seller) {
                           return SellerListTiles.getTile(seller);
                         }).toList()
                       ),
-                    )
-                ], 
-                ));
-              }
-      },
+                    );
+          }
+      }
+      )
     );
   }
 }

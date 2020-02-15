@@ -9,10 +9,10 @@ class DataBase{
   }
   addSeller(String email, String name, DateTime availableStart, DateTime availableEnd){
     store.collection('sellers').add({
-      email,
-      name,
-      availableEnd,
-      availableStart
+      "email": email,
+      "name": name,
+      "availableEnd": availableEnd,
+      "availableStart": availableStart
     });
   }
 

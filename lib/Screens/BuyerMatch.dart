@@ -50,8 +50,6 @@ class _BuyerMatch extends State {
               return Center(
                   child: Column(
 
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
                           children: snapshot.data.map((seller) {
                             print(seller.typeSell);
                           return SellerListTiles.getTile(seller);

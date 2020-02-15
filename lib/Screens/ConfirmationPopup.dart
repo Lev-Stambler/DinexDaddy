@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+_confirmResult(bool isYes, BuildContext context) {
+  if (isYes) {
+    
+  }
 
+}
 
 class ConfirmationDialog {
   confirm(BuildContext context, String title, String description) {
@@ -18,7 +23,7 @@ class ConfirmationDialog {
           ),
           actions: <Widget>[
             FlatButton(
-              //onPressed: () => confirmResult(),
+              onPressed: () => confirmResult(),
               child: Text("cancel"),
 
             )

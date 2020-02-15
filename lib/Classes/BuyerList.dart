@@ -7,7 +7,8 @@ class SellerListTiles{
     return Center(
     child: Column(
       children: <Widget>[
-      Container(
+      Center(
+        child: Container(
       color: input.typeSell == "Block"? Colors.green[50] : Colors.blue[50],
       padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
       child: Row(
@@ -29,10 +30,14 @@ class SellerListTiles{
               Text(input.price.toString())
           ],)
       ],),
-    ),
+    )),
     Container(
-      child: FloatingActionButton(
-        child: Text("Send Email"),
+      width: 200,
+      child: RaisedButton(
+        child: Center(child: Text("Send Email")),
+        onPressed: (){
+          _launchURL(input.email);
+        },
 
         ),
     )
@@ -43,3 +48,12 @@ class SellerListTiles{
     
 }
 //start time, end time, email price, type 
+
+_launchURL(input) async {
+  var url = 'mailto:${input}?subject=News&body=New%20plugin';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}

@@ -22,6 +22,10 @@ class _Sell extends State {
   DateTime availbleEnd;
   DateTime availbleStart;
   _Sell() {
+    availbleStart = new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day,
+                                selectedRange.start.round());
+    availbleEnd = new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day,
+                                selectedRange.end.round());
     price = 7.5;
   }
  @override
@@ -109,7 +113,7 @@ class _Sell extends State {
                 ),
                 RaisedButton(
                   onPressed: () {
-                    Seller s  = Seller(name, email, price, availbleStart, availbleEnd, "Block");
+                    Seller s  = new Seller(name, email, price, availbleStart, availbleEnd, "Block");
                     DataBase().addSeller(s);
                     Navigator.pushNamed(context, '/buy');
                   },
@@ -117,7 +121,8 @@ class _Sell extends State {
                 ),
                 RaisedButton(
                   onPressed: () {
-                    Seller s  = Seller(name, email, price, availbleStart, availbleEnd, "Dinex");
+                    print(name);
+                    Seller s  = new Seller(name, email, price, availbleStart, availbleEnd, "Dinex");
                     DataBase().addSeller(s);
                     Navigator.pushNamed(context, '/sell');
                   },

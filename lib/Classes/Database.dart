@@ -9,7 +9,7 @@ class DataBase{
     store = firestore();
   }
   addSeller(Seller s){
-    print(s.email);
+    print(s);
     store.collection('sellers').add({
       "email": s.email,
       "name": s.name,

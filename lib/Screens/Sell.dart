@@ -18,6 +18,8 @@ class _Sell extends State {
   String email;
   double price;
   String name;
+  List<bool> _selections = [false,false];
+
   var selectedRange = RangeValues(6,18);
   DateTime availbleEnd;
   DateTime availbleStart;
@@ -111,23 +113,36 @@ class _Sell extends State {
                           ),
                   ],),
                 ),
-                RaisedButton(
-                  onPressed: () {
-                    Seller s  = new Seller(name, email, price, availbleStart, availbleEnd, "Block");
-                    DataBase().addSeller(s);
-                    showAlertDialog(context);
-                  },
-                  child: Text('Block'),
-                ),
-                RaisedButton(
-                  onPressed: () {
-                    print(name);
-                    Seller s  = new Seller(name, email, price, availbleStart, availbleEnd, "Dinex");
-                    DataBase().addSeller(s);
-                    showAlertDialog(context);
-                  },
-                  child: Text('Dinex'),
-                )
+                ToggleButtons(
+                children: [
+                  Icon(Icons.attach_money),
+                  Icon(Icons.add_box),
+                ],
+                isSelected: _selections,
+                
+                onPressed: (int index) {
+                  setState(() {
+                    for (int buttonIndex = 0; buttonIndex < _selections.length; buttonIndex++) {
+                        if (buttonIndex == index) {
+                        _selections[buttonIndex] = !_selections[buttonIndex];
+                        } else {
+                        _selections[buttonIndex] = false;
+                        }
+                    }
+                   
+                  });
+                }
+                
+              ),
+              RaisedButton(
+                onPressed: () {
+                  String typeUsed = _selections[0] ? "Dinex" : "Block";
+                  Seller s  = new Seller(name, email, price, availbleStart, availbleEnd, typeUsed);
+                  DataBase().addSeller(s);
+                  showAlertDialog(context);
+                },
+                child: Text('Submit'),
+              ),
               ]
             ),
             // Row (

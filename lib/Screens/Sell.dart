@@ -86,9 +86,14 @@ class _Sell extends State {
                   value: price,
                   onChanged: 
                   (newPrice) {
-                    price = newPrice;
+                    setState(() {
+                      price = newPrice;
+                  });
                   },
-                  divisions: 1,
+                  semanticFormatterCallback: (double newValue) {
+                    return '${newValue.round()} dollars';
+                  },
+                  divisions: 20,
                   label: "Choose your price",
                   max: 20.0,
                   min: 0.0,),

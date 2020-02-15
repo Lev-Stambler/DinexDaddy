@@ -1,3 +1,4 @@
+import 'package:DinexDaddy/Screens/Sell.dart';
 import 'package:flutter/material.dart';
 import '../Classes/Seller.dart';
 import '../Classes/Database.dart';
@@ -30,12 +31,12 @@ class _BuyerMatch extends State {
       future: buildList(), // function where you call your api
       builder: (BuildContext context, AsyncSnapshot<List<Seller>> snapshot) {  // AsyncSnapshot<Your object type>
         if(snapshot.connectionState == ConnectionState.waiting){
-          return Center(child: Text('Please wait while everything loads...'));
+          return Scaffold(body: Center(child: Text('Please wait while everything loads...')));
         } else{
             if (snapshot.hasError)
               return Center(child: Text('Error: ${snapshot.error}'));
             else
-              return Center(
+              return Scaffold(body: Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -44,25 +45,32 @@ class _BuyerMatch extends State {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: snapshot.data.map((seller) {
-                        return Row(
-                          children: <Widget>[
-                            new Text(seller.name),
-                            new Text(seller.email),
-                          ]
-                        );
+                        return SellerShow(seller);
                       }).toList()
                     )]
                   )
-                );
+                ));
               }
       },
     );
   }
-  Future<String> downloadData()async{
-    //   var response =  await http.get('https://getProjectList');    
-    return Future.value("Data download successfully"); // return your response
+}
+class SellerShow extends StatelessWidget {
+  //var rating = 0.0;
+  Seller s;
+  SellerShow(this.s);
+ @override
+  Widget build(BuildContext context) {
+    return Center (
+        child: Row(children: <Widget>[
+          Text("Email: " + s.email),
+          Text("Name: " + s.name),
+        ],)
+    );
   }
 }
+
+
 //  @override
 //   Widget build(BuildContext context) {
 //     return Scaffold(

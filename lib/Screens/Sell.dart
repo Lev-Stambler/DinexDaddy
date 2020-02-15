@@ -22,6 +22,8 @@ class _Sell extends State {
   String name;
   String dropdownValue = '(No Preference)';
   List<bool> _selections = [false,false];
+  bool _validate = true;
+  var _text = TextEditingController(); 
 
   var selectedRange = RangeValues(6,18);
   DateTime availbleEnd;
@@ -33,6 +35,13 @@ class _Sell extends State {
                                 selectedRange.end.round());
     price = 7.5;
   }
+
+  @override
+  void dispose() {
+    _text.dispose();
+    super.dispose();
+  }
+
  @override
   Widget build(BuildContext context) {
     Color PrimaryColor = const Color(0xFFB71C1C);
@@ -61,9 +70,12 @@ class _Sell extends State {
                 margin: const EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child:
                 new TextField(
+                  controller: _text,
                   decoration: InputDecoration(
+                    errorText: !_validate ? 'Email Can\'t Be empty' : null,
                     border: OutlineInputBorder(),
                     hintText: 'Enter email'
+                    
                   ),
                   onChanged: (String val) {
                     setState(() {
@@ -77,7 +89,9 @@ class _Sell extends State {
                 margin: const EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child: new
                   TextField(
+                    controller: _text,
                     decoration: InputDecoration(
+                      errorText: !_validate ? 'Name Can\'t Be empty' : null,
                       border: OutlineInputBorder(),
                       hintText: 'Enter name'
                     ),
@@ -174,10 +188,18 @@ class _Sell extends State {
                 ],),
               RaisedButton(
                 onPressed: () {
-                  String typeUsed = _selections[0] ? "Dinex" : "Block";
-                  Seller s  = new Seller(name, email, price, availbleStart, availbleEnd, typeUsed, dropdownValue);
-                  DataBase().addSeller(s);
-                  showAlertDialog(context);
+                  setState(() {
+                  _text.text.isEmpty ? _validate = false : _validate = true;
+                  });
+                  if (_validate) {
+                    String typeUsed = _selections[0] ? "Dinex" : "Block";
+                    Seller s  = new Seller(name, email, price, availbleStart, availbleEnd, typeUsed, dropdownValue);
+                    DataBase().addSeller(s);
+                    showAlertDialog(context);
+                  }
+                  else{
+
+                  }
                 },
                 child: Text('Submit'),
               ),

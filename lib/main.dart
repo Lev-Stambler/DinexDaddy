@@ -15,7 +15,6 @@ class App extends StatelessWidget {
       routes: {
         '/buy': (context) => Buy(),
         '/buyer-match': (context) => BuyerMatch(),
-        '/sell': (context) => Sell(),
       },
       title: 'Flutter Demo',
       theme: ThemeData(

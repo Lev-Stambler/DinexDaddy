@@ -32,7 +32,7 @@ class DataBase{
 
   Future<List<Seller>> getSellers(DateTime buyerStart, DateTime buyerEnd, String typeSell, String location) async{
     // .where("availableEnd", '<=', buyerEnd)
-    fs.QuerySnapshot refs = await store.collection('sellers').where("availableStart", '>=', buyerStart).where("typeSell", "==", typeSell).get();
+    fs.QuerySnapshot refs = await store.collection('sellers').where("availableStart", '<=', buyerEnd).where("typeSell", "==", typeSell).get();
     List<Seller> sellers = [];
     refs.forEach((ref) {
       final Map<String, dynamic> user = ref.data();
@@ -40,7 +40,7 @@ class DataBase{
           && user.containsKey("email") && user.containsKey("availableStart")
           && user.containsKey("availableEnd")
           && user.containsKey("price") && user.containsKey("location") &&
-          cast<DateTime>(user["availableEnd"]).compareTo(buyerEnd) <= 0) {
+          cast<DateTime>(user["availableEnd"]).compareTo(buyerStart) >= 0) {
         if (location == "(No Preference)" || user["location"].toString() == "(No Preference)" || user["location"].toString() == location) {
           Seller s = new Seller(user["name"].toString(), user["email"].toString(), cast<double>(user["price"]),
             cast<DateTime>(user["availableStart"]), cast<DateTime>(user["availableEnd"]), user["typeSell"].toString(),

@@ -5,6 +5,7 @@ import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 class Sell extends StatelessWidget {
   String email;
   String name;
+  DateTime availbleEnd;
   Sell(String _email, String _name) {
     email = _email;
     name = _name;
@@ -54,25 +55,24 @@ class Sell extends StatelessWidget {
                 ),
                 RaisedButton(
                   onPressed: () {
-                    DatePicker.showDatePicker(context,
+                    DatePicker.showTimePicker(context,
                       showTitleActions: true,
-                      minTime: DateTime(2018, 3, 5),
-                      maxTime: DateTime(2019, 6, 7), onChanged: (date) {
+                      // minTime: DateTime.now(),
+                      // maxTime: DateTime(2021),
+                      onChanged: (date) {
                         print('change $date');
                       }, onConfirm: (date) {
+                        availbleEnd = date;
                         print('confirm $date');
-                      }, currentTime: DateTime.now(), locale: LocaleType.zh
+                      }, currentTime: DateTime.now(), locale: LocaleType.en
                     );
-                    DataBase().addSeller(email, name, 
-                      DateTime.now(), DateTime.now(), "Block");
-                    Navigator.pushNamed(context, '/buy');
                   },
                   child: Text('Choose your end time'),
                 ),
                 RaisedButton(
                   onPressed: () {
                     DataBase().addSeller(email, name, 
-                      DateTime.now(), DateTime.now(), "Block");
+                      DateTime.now(), availbleEnd, "Block");
                     Navigator.pushNamed(context, '/buy');
                   },
                   child: Text('Block'),
@@ -80,7 +80,7 @@ class Sell extends StatelessWidget {
                 RaisedButton(
                   onPressed: () {
                     DataBase().addSeller(email, name, 
-                      DateTime.now(), DateTime.now(), "Dinex");
+                      DateTime.now(), availbleEnd, "Dinex");
                     Navigator.pushNamed(context, '/sell');
                   },
                   child: Text('Dinex'),

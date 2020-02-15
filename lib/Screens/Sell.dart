@@ -1,4 +1,5 @@
 import 'package:DinexDaddy/Classes/Database.dart';
+import 'package:DinexDaddy/Classes/Seller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
@@ -17,8 +18,16 @@ class _Sell extends State {
   String email;
   double price;
   String name;
+  List<bool> _selections = [false,false];
+
+  var selectedRange = RangeValues(6,18);
   DateTime availbleEnd;
+  DateTime availbleStart;
   _Sell() {
+    availbleStart = new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day,
+                                selectedRange.start.round());
+    availbleEnd = new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day,
+                                selectedRange.end.round());
     price = 7.5;
   }
  @override
@@ -66,26 +75,10 @@ class _Sell extends State {
                     },
                   ),
                 ),
-                RaisedButton(
-                  onPressed: () {
-                    DatePicker.showTimePicker(context,
-                      showTitleActions: true,
-                      // minTime: DateTime.now(),
-                      // maxTime: DateTime(2021),
-                      onChanged: (date) {
-                        print('change $date');
-                      }, onConfirm: (date) {
-                        availbleEnd = date;
-                        print('confirm $date');
-                      }, currentTime: DateTime.now(), locale: LocaleType.en
-                    );
-                  },
-                  child: Text('Choose your end time'),
-                ),
                 new Container(
                   width: 500.0,
                   child: Column(children: <Widget>[
-                    Text("Choose your price"),
+                    Text("Choose your price:"),
                     Slider( 
                       value: price,
                       onChanged: 
@@ -98,24 +91,54 @@ class _Sell extends State {
                       label: '\$${price}',
                       max: 20.0,
                       min: 0.0,),
+                    Text("Choose your preferred time range:"),
+                    RangeSlider(
+                      values: selectedRange,
+                      min: 0,
+                      max: 24,
+                      labels: RangeLabels("${selectedRange.start}:00","${selectedRange.end}:00"),
+                      onChanged: (RangeValues newRange) {
+                        setState(() {
+                          selectedRange = newRange;
+                          availbleStart = new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day,
+                                                     selectedRange.start.round());
+                          availbleEnd = new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day,
+                                                     selectedRange.end.round());
+                        });
+                      },
+                      semanticFormatterCallback: (RangeValues rangeValues) {
+                        return '${rangeValues.start.round()} - ${rangeValues.end.round()}  dollars';
+                      },
+                      divisions: 24,
+                          ),
                   ],),
                 ),
-                RaisedButton(
-                  onPressed: () {
-                    DataBase().addSeller(email, name, 
-                      DateTime.now(), availbleEnd, "Block", price);
-                    Navigator.pushNamed(context, '/buy');
-                  },
-                  child: Text('Block'),
-                ),
-                RaisedButton(
-                  onPressed: () {
-                    DataBase().addSeller(email, name, 
-                      DateTime.now(), availbleEnd, "Dinex", price);
-                    Navigator.pushNamed(context, '/sell');
-                  },
-                  child: Text('Dinex'),
-                )
+                ToggleButtons(
+                children: [
+                  Icon(Icons.attach_money),
+                  Icon(Icons.add_box),
+                ],
+                isSelected: _selections,
+                
+                onPressed: (int index) {
+                  setState(() {
+                    for (int buttonIndex = 0; buttonIndex < _selections.length; buttonIndex++) {
+                        if (buttonIndex == index) {
+                        _selections[buttonIndex] = !_selections[buttonIndex];
+                        } else {
+                        _selections[buttonIndex] = false;
+                        }
+                    }
+                   
+                  });
+                }
+                
+              ),
+              RaisedButton(
+                onPressed: () {
+                  //list for sale
+                }
+              )
               ]
             ),
             // Row (

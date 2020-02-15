@@ -3,12 +3,9 @@ import 'package:flutter/material.dart';
 class Seller {
   String name;
   String email;
-  int dinexPrice;
-  int blockPrice;
-  Seller(String name, String email, int dinex, int block){
-    name = name;
-    email = email;
-    dinexPrice = dinex;
-    blockPrice = block;
-  }
+  DateTime availableStart;
+  DateTime availableEnd;
+  double price;
+  String typeSell;
+  Seller(this.name, this.email, this.price, this.availableStart, this.availableEnd, this.typeSell);
 }

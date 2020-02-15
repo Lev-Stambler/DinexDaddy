@@ -22,8 +22,7 @@ class SellerListTiles{
           ],),
           Column(
             children: <Widget>[
-              Text("Price: ${input.price.toString()}"),
-              Text(input.price.toString())
+              Text("Price: ${input.price}"),
           ],)
       ],),
     )

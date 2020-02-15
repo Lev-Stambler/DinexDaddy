@@ -41,8 +41,10 @@ class _Sell extends State {
         title: Text("Dinex Daddy"),
         backgroundColor: PrimaryColor,
       ),
-      body: Center(
-        child: Column(
+      body: Container(
+        child: Center(
+          child: 
+        Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
@@ -51,8 +53,8 @@ class _Sell extends State {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
               Container(
-              height: 180,
-              width: 180,
+              height: 100,
+              width: 100,
               child: Image.asset('lib/images/logo.png'),
               padding: EdgeInsets.only(bottom: 50),
               ),    
@@ -191,6 +193,7 @@ class _Sell extends State {
             // )
 
           ],
+        ) 
         ) 
       ),
     );

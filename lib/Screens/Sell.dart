@@ -38,7 +38,7 @@ class _Sell extends State {
     Color PrimaryColor = const Color(0xFFB71C1C);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Dinex Daddy"),
+        title: Text("Seller Homepage"),
         backgroundColor: PrimaryColor,
       ),
       body: Center(

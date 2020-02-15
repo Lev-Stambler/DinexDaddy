@@ -3,7 +3,9 @@ import 'Seller.dart';
 
 class SellerListTiles{
   static Widget getTile(Seller input){
-    return Container(
+    return Center(
+    child: Container(
+      color: input.typeSell == "Block"? Colors.green[50] : Colors.blue[50],
       padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
       child: Row(
         children: <Widget>[
@@ -24,6 +26,7 @@ class SellerListTiles{
               Text(input.price.toString())
           ],)
       ],),
+    )
     );
   }
     

@@ -4,6 +4,7 @@ import 'package:DinexDaddy/Screens/BuyerMatch.dart';
 import 'package:DinexDaddy/Screens/Sell.dart';
 import 'package:firebase/firebase.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:DinexDaddy/Screens/Final.dart';
 import 'package:flutter/material.dart';
 
 void main(){

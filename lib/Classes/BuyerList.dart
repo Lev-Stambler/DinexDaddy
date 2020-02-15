@@ -11,7 +11,8 @@ class SellerListTiles{
         child: Container(
       color: input.typeSell == "Block"? Colors.green[50] : Colors.blue[50],
       padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
-      child: Row(
+      child: Center(
+        child:Row(
         children: <Widget>[
           Column(
             children: <Widget>[
@@ -29,7 +30,7 @@ class SellerListTiles{
               Text("Price: ${input.price.toString()}"),
               Text(input.price.toString())
           ],)
-      ],),
+      ],),)
     )),
     Container(
       width: 200,

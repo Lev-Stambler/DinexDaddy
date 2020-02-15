@@ -2,10 +2,27 @@ import 'package:DinexDaddy/Screens/Buy.dart';
 import 'package:DinexDaddy/Screens/BuyOrSell.dart';
 import 'package:DinexDaddy/Screens/BuyerMatch.dart';
 import 'package:DinexDaddy/Screens/Sell.dart';
+import 'package:firebase/firebase.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(App(
-));
+void main(){
+  // App fb;
+  // if (fb.apps.isEmpty) { 
+    initializeApp(
+      apiKey: "AIzaSyAxw_7z41zoY9xN75GdwCqbDe3jHMtXEu0",
+      authDomain: "dinex-daddy.firebaseapp.com",
+      databaseURL: "https://dinex-daddy.firebaseio.com",
+      projectId: "dinex-daddy",
+      storageBucket: "dinex-daddy.appspot.com",
+      messagingSenderId: "707208204964",
+      appId: "1:707208204964:web:7e743e72f83bd19d9e8c31",
+      measurementId: "G-DX3TLK7HQ8"
+    );
+  // }
+  runApp(App(
+  ));
+}
 
 class App extends StatelessWidget {  
   @override

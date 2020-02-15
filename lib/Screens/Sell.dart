@@ -2,13 +2,15 @@ import 'package:DinexDaddy/Classes/Database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
-class Sell extends StatelessWidget {
+class Sell extends State {
   String email;
+  double price;
   String name;
   DateTime availbleEnd;
   Sell(String _email, String _name) {
     email = _email;
     name = _name;
+    price = 8.0;
   }
  @override
   Widget build(BuildContext context) {
@@ -69,10 +71,20 @@ class Sell extends StatelessWidget {
                   },
                   child: Text('Choose your end time'),
                 ),
+                Slider( 
+                  value: price,
+                  onChanged: 
+                  (newPrice) {
+                    price = newPrice;
+                  },
+                  divisions: 1,
+                  label: "Choose your price",
+                  max: 20.0,
+                  min: 0.0,),
                 RaisedButton(
                   onPressed: () {
                     DataBase().addSeller(email, name, 
-                      DateTime.now(), availbleEnd, "Block");
+                      DateTime.now(), availbleEnd, "Block", price);
                     Navigator.pushNamed(context, '/buy');
                   },
                   child: Text('Block'),
@@ -80,7 +92,7 @@ class Sell extends StatelessWidget {
                 RaisedButton(
                   onPressed: () {
                     DataBase().addSeller(email, name, 
-                      DateTime.now(), availbleEnd, "Dinex");
+                      DateTime.now(), availbleEnd, "Dinex", price);
                     Navigator.pushNamed(context, '/sell');
                   },
                   child: Text('Dinex'),

@@ -11,9 +11,11 @@ class _FeedbackForm extends State<FeedbackForm> {
 
   @override
   Widget build(BuildContext context) {
+    Color PrimaryColor = const Color(0xFFB71C1C);
     return Scaffold(
           appBar: AppBar(
             title: Text("Feedback"),
+            backgroundColor: PrimaryColor,
           ),
           body: Center(
             child: Column(

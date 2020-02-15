@@ -32,9 +32,11 @@ class _Sell extends State {
   }
  @override
   Widget build(BuildContext context) {
+    Color PrimaryColor = const Color(0xFFB71C1C);
     return Scaffold(
       appBar: AppBar(
         title: Text("Dinex Daddy"),
+        backgroundColor: PrimaryColor,
       ),
       body: Center(
         child: Column(

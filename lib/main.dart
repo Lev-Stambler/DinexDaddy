@@ -37,8 +37,8 @@ class App extends StatelessWidget {
         '/feedback': (context) => FeedbackForm(),
       },
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      theme: new ThemeData(
+        primarySwatch: Colors.red,
       ),
       home: BuyOrSell(),
     );

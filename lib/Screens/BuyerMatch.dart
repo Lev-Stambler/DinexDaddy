@@ -18,9 +18,11 @@ class BuyerMatch extends StatelessWidget {
  @override
   Widget build(BuildContext context) {
     buildList();
+    Color PrimaryColor = const Color(0xFFB71C1C);
     return Scaffold(
       appBar: AppBar(
         title: Text("Matches"),
+        backgroundColor: PrimaryColor,
       ),
       body: Center(
         child: Row(

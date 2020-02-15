@@ -11,6 +11,15 @@ class BuyOrSell extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Dinex Daddy"),
+        actions: <Widget>[
+            // action button
+            IconButton(
+              icon: Icon(Icons.feedback),
+              onPressed: () {
+                Navigator.pushNamed(context, '/feedback');
+              },
+            ),
+        ]
       ),
       body: Center(
         child: Column(

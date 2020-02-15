@@ -2,6 +2,7 @@ import 'package:DinexDaddy/Classes/Database.dart';
 import 'package:DinexDaddy/Screens/Buy.dart';
 import 'package:DinexDaddy/Screens/BuyOrSell.dart';
 import 'package:DinexDaddy/Screens/BuyerMatch.dart';
+import 'package:DinexDaddy/Screens/FeedbackForm.dart';
 import 'package:DinexDaddy/Screens/Sell.dart';
 import 'package:firebase/firebase.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -31,8 +32,14 @@ class App extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
+<<<<<<< HEAD
          '/buy': (context) => Buy(),
         '/buyer-match': (context) => BuyerMatch(),
+=======
+        // '/buy': (context) => Buy(),
+        '/buy': (context) => BuyerMatch(),
+        '/feedback': (context) => FeedbackForm(),
+>>>>>>> 9c0e4190656d34e79b289dc29823380ba2d8c96d
       },
       title: 'Flutter Demo',
       theme: ThemeData(

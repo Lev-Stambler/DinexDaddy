@@ -18,5 +18,9 @@ class DataBase{
       "price": price
     });
   }
+  getSellers(DateTime start, DateTime end){
+    var ref = store.collection('sellers').where("availableStart", '>=', start).where("availableStart", '<=', end).get();
 
+
+  }
 }

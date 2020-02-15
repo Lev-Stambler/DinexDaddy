@@ -20,7 +20,10 @@ class DataBase{
   }
   getSellers(DateTime start, DateTime end){
     var ref = store.collection('sellers').where("availableStart", '>=', start).where("availableStart", '<=', end).get();
-
-
+    print("ref*******");
+    print(ref);
+    var test = store.collection('sellers').get();
+    print("TEST*******");
+    print(test);
   }
 }

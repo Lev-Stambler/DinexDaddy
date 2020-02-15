@@ -1,32 +1,19 @@
 import 'package:flutter/material.dart';
 import '../Classes/Seller.dart';
+import '../Classes/Database.dart';
 
 class BuyerMatch extends StatelessWidget {
+  DataBase DB = DataBase();
+  static var now = DateTime.now();
+  static var earlier = DateTime.parse("1969-07-20 20:18:04Z");
   List<Seller> Sellers = [
-    Seller("pp", "pp@smol.com", 10, 15),
-    
-    Seller("shSmol", "pp@smol.com", 1, 5),
+    Seller("pp", "pp@smol.com", 10, earlier, now, "Block")
   ];
   List<ListView> ListToDisplay = [];
   buildList(){
-    for(var i = 0; i < Sellers.length; i++){
-      ListToDisplay.add(
-        ListView(
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Text("FUCK THIS SHIT")
-                // Text(Sellers[i].name),
-                // Text(Sellers[i].email),
-                // Text(Sellers[i].dinexPrice.toString()),      
-                // Text(Sellers[i].blockPrice.toString()),      
-              ],
-              ),
-          ],
-        )
-      );
+    DB.getSellers(DateTime.parse("1970-07-20 20:18:04Z"), DateTime.parse("1971-07-20 20:18:04Z"));
 
-    }
+
   }
  @override
   Widget build(BuildContext context) {

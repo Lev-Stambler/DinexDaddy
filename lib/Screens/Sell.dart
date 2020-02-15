@@ -17,6 +17,7 @@ class _Sell extends State {
   String email;
   double price;
   String name;
+  var selectedRange = RangeValues(6,18);
   DateTime availbleEnd;
   _Sell() {
     price = 7.5;
@@ -85,7 +86,7 @@ class _Sell extends State {
                 new Container(
                   width: 500.0,
                   child: Column(children: <Widget>[
-                    Text("Choose your price"),
+                    Text("Choose your price:"),
                     Slider( 
                       value: price,
                       onChanged: 
@@ -98,6 +99,20 @@ class _Sell extends State {
                       label: '\$${price}',
                       max: 20.0,
                       min: 0.0,),
+                    Text("Choose your preferred time range:"),
+                    RangeSlider(
+                      values: selectedRange,
+                      min: 0,
+                      max: 24,
+                      labels: RangeLabels("${selectedRange.start}:00","${selectedRange.end}:00"),
+                      onChanged: (RangeValues newRange) {
+                        setState(() => selectedRange = newRange);
+                      },
+                      semanticFormatterCallback: (RangeValues rangeValues) {
+                        return '${rangeValues.start.round()} - ${rangeValues.end.round()}  dollars';
+                      },
+                      divisions: 24,
+                          ),
                   ],),
                 ),
                 RaisedButton(

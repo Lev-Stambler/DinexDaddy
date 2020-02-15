@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
-
 
 _confirmResult(bool isYes, BuildContext context) {
   if (isYes) {
@@ -10,6 +8,7 @@ _confirmResult(bool isYes, BuildContext context) {
 }
 
 class ConfirmationDialog {
+  var rating = 0.0;
   confirm(BuildContext context, String title, String description) {
     return showDialog (
       context: context,
@@ -21,15 +20,6 @@ class ConfirmationDialog {
             child: ListBody(
               children: <Widget>[
                 Text(description),
-                SmoothStarRating(
-                rating: rating,
-                size: 45,
-                starCount: 5,
-                onRatingChanged: (value) {
-                  setState(() {
-                    rating = value;
-                  });
-                )
               ],
             ),
           ),
@@ -42,6 +32,12 @@ class ConfirmationDialog {
         );
       }
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
   }
 
 } 

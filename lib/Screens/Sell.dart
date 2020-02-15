@@ -18,6 +18,8 @@ class _Sell extends State {
   String email;
   double price;
   String name;
+  List<bool> _selections = [false,false];
+
   var selectedRange = RangeValues(6,18);
   DateTime availbleEnd;
   DateTime availbleStart;
@@ -76,7 +78,7 @@ class _Sell extends State {
                 new Container(
                   width: 500.0,
                   child: Column(children: <Widget>[
-                    Text("Choose your price:"),
+                    Text("Choose your price: (For one block or \$5 of Dinex)"),
                     Slider( 
                       value: price,
                       onChanged: 
@@ -111,23 +113,37 @@ class _Sell extends State {
                           ),
                   ],),
                 ),
-                RaisedButton(
-                  onPressed: () {
-                    Seller s  = new Seller(name, email, price, availbleStart, availbleEnd, "Block");
-                    DataBase().addSeller(s);
-                    Navigator.pushNamed(context, '/buy');
-                  },
-                  child: Text('Block'),
+                Column(children: <Widget>[
+                  Text("Select either Dinex or Blocks to sell"),
+                  ToggleButtons(
+                  children: [
+                    Icon(Icons.attach_money),
+                    Icon(Icons.fastfood),
+                  ],
+                  isSelected: _selections,
+                  
+                  onPressed: (int index) {
+                    setState(() {
+                      for (int buttonIndex = 0; buttonIndex < _selections.length; buttonIndex++) {
+                        if (buttonIndex == index) {
+                        _selections[buttonIndex] = !_selections[buttonIndex];
+                        } else {
+                          _selections[buttonIndex] = false;
+                        }
+                      } 
+                    });
+                  }
                 ),
-                RaisedButton(
-                  onPressed: () {
-                    print(name);
-                    Seller s  = new Seller(name, email, price, availbleStart, availbleEnd, "Dinex");
-                    DataBase().addSeller(s);
-                    Navigator.pushNamed(context, '/sell');
-                  },
-                  child: Text('Dinex'),
-                )
+                ],),
+              RaisedButton(
+                onPressed: () {
+                  String typeUsed = _selections[0] ? "Dinex" : "Block";
+                  Seller s  = new Seller(name, email, price, availbleStart, availbleEnd, typeUsed);
+                  DataBase().addSeller(s);
+                  showAlertDialog(context);
+                },
+                child: Text('Submit'),
+              ),
               ]
             ),
             // Row (
@@ -142,4 +158,33 @@ class _Sell extends State {
       ),
     );
   } 
+}
+
+showAlertDialog(BuildContext context) {
+
+  // set up the button
+Widget okButton = FlatButton(
+  child: Text("OK"),
+  onPressed: () {
+    Navigator.pop(context);
+   },
+);
+
+// set up the AlertDialog
+AlertDialog alert = AlertDialog(
+  title: Text("Confirmation"),
+  content: Text("Congrats! You are now a listed seller"),
+  actions: [
+    okButton,
+  ],
+  
+);
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }

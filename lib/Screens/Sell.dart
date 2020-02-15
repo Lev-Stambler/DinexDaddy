@@ -78,7 +78,7 @@ class _Sell extends State {
                 new Container(
                   width: 500.0,
                   child: Column(children: <Widget>[
-                    Text("Choose your price:"),
+                    Text("Choose your price: (For one block or \$5 of Dinex)"),
                     Slider( 
                       value: price,
                       onChanged: 
@@ -113,27 +113,28 @@ class _Sell extends State {
                           ),
                   ],),
                 ),
-                ToggleButtons(
-                children: [
-                  Icon(Icons.attach_money),
-                  Icon(Icons.fastfood),
-                ],
-                isSelected: _selections,
-                
-                onPressed: (int index) {
-                  setState(() {
-                    for (int buttonIndex = 0; buttonIndex < _selections.length; buttonIndex++) {
+                Column(children: <Widget>[
+                  Text("Select either Dinex or Blocks to sell"),
+                  ToggleButtons(
+                  children: [
+                    Icon(Icons.attach_money),
+                    Icon(Icons.fastfood),
+                  ],
+                  isSelected: _selections,
+                  
+                  onPressed: (int index) {
+                    setState(() {
+                      for (int buttonIndex = 0; buttonIndex < _selections.length; buttonIndex++) {
                         if (buttonIndex == index) {
                         _selections[buttonIndex] = !_selections[buttonIndex];
                         } else {
-                        _selections[buttonIndex] = false;
+                          _selections[buttonIndex] = false;
                         }
-                    }
-                   
-                  });
-                }
-                
-              ),
+                      } 
+                    });
+                  }
+                ),
+                ],),
               RaisedButton(
                 onPressed: () {
                   String typeUsed = _selections[0] ? "Dinex" : "Block";

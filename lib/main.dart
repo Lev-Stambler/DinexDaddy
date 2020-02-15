@@ -33,7 +33,7 @@ class App extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/buy': (context) => Buy(),
-        //'/buy': (context) => BuyerMatch(),
+        '/buyer-match': (context) => BuyerMatch(),
         '/feedback': (context) => FeedbackForm(),
       },
       title: 'Flutter Demo',

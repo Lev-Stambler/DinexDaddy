@@ -7,12 +7,14 @@ class DataBase{
   DataBase() {
     store = firestore();
   }
-  addSeller(String email, String name, DateTime availableStart, DateTime availableEnd){
+  addSeller(String email, String name, DateTime availableStart,
+            DateTime availableEnd, String typeSell){
     store.collection('sellers').add({
       "email": email,
       "name": name,
+      "availableStart": availableStart,
       "availableEnd": availableEnd,
-      "availableStart": availableStart
+      "typeSell": typeSell
     });
   }
 

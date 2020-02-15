@@ -14,6 +14,12 @@ class Final extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Container(
+              height: 180,
+              width: 180,
+              child: Image.asset('lib/images/logo.png'),
+              padding: EdgeInsets.only(bottom: 50),
+              ),  
             Text('Transaction Confirmed', 
             style: TextStyle(fontWeight: FontWeight.bold),),
             Text('Meet With:'), 
@@ -23,7 +29,7 @@ class Final extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, '/buy-or-sell');
               },
-              child: Text('Home'),
+              child: Text('Submit'),
             )
           ],
         ) 

@@ -40,6 +40,12 @@ class Buy extends StatefulWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget> [
+          Container(
+              height: 180,
+              width: 180,
+              child: Image.asset('lib/images/logo.png'),
+              padding: EdgeInsets.only(bottom: 50),
+              ),  
           Text("Choose your preferred time range:"),
           RangeSlider(
             values: selectedRange,

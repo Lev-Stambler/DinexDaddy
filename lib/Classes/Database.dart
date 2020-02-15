@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:firebase/firebase.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase/firestore.dart' as fs;
 
 class DataBase{
-  final firestore = Firestore.instance;
-  add(){
-    firestore.collection('messages').add({
-                        'text': "TEST WEB MESSAGE",
-                        'value': 2,
-                      });
+  fs.Firestore store;
+  DataBase() {
+    store = firestore();
+  }
+  addSeller(String email, String name, DateTime availableStart,
+            DateTime availableEnd, String typeSell, double price){
+    store.collection('sellers').add({
+      "email": email,
+      "name": name,
+      "availableStart": availableStart,
+      "availableEnd": availableEnd,
+      "typeSell": typeSell,
+      "price": price
+    });
   }
 
 }

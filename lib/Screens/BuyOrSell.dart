@@ -14,32 +14,6 @@ class BuyOrSell extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            new Container(
-              width: 300.0,
-              child:
-              new TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter email'
-                ),
-                onChanged: (String val) {
-                  email = val;
-                },
-              ),
-            ),
-            new Container(
-              width: 300.0,
-              child: new
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter name'
-                ),
-                onChanged: (String val) {
-                  name = val;
-                },
-              ),
-            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,7 +33,7 @@ class BuyOrSell extends StatelessWidget {
                 RaisedButton(
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => Sell(email, name))
+                      builder: (context) => Sell())
                     );
                   },
                   child: Text('Sell'),

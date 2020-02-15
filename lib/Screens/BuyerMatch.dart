@@ -43,11 +43,29 @@ class BuyerMatch extends StatelessWidget {
             Row (
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                ListView(
-                  children: ListToDisplay
-                ),
-              ],
+              children: Sellers.map((seller) {
+                return Row(
+                  children: <Widget>[
+                    new Text(seller.name),
+                    new Text(seller.email),
+                  ]
+                );
+              }).toList()
+              // <Widget>[
+                // for (var i = 0; i < Sellers.length; i++) {
+                //   Text(Sellers[i].name)
+                // },
+                // for (var seller = Sellers[0])
+                // {
+
+                // },
+              //   ListView(
+              //     children: <Widget>[
+              //       Text("Element 1"),
+              //       Text("Element 2")
+              //     ],
+              //   ),
+              // ],
             )
 
           ],

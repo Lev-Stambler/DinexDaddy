@@ -2,6 +2,7 @@ import 'package:DinexDaddy/Screens/Buy.dart';
 import 'package:DinexDaddy/Screens/BuyOrSell.dart';
 import 'package:DinexDaddy/Screens/BuyerMatch.dart';
 import 'package:DinexDaddy/Screens/Sell.dart';
+import 'package:DinexDaddy/Screens/Final.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(App(
@@ -16,6 +17,7 @@ class App extends StatelessWidget {
         '/buy': (context) => Buy(),
         '/buyer-match': (context) => BuyerMatch(),
         '/sell': (context) => Sell(),
+        '/final': (context) => Final()
       },
       title: 'Flutter Demo',
       theme: ThemeData(

@@ -5,14 +5,15 @@ class BuyerMatch extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Second Screen"),
+        title: Text("Matches"),
       ),
       body: Center(
         child: RaisedButton(
           onPressed: () {
+            Navigator.pushNamed(context, '/buy');
             // Navigate back to first screen when tapped.
           },
-          child: Text('Go back!'),
+          child: Text('Back'),
         ),
       ),
     );

@@ -38,16 +38,18 @@ class _BuyerMatch extends State {
             if (snapshot.hasError)
               return Center(child: Text('Error: ${snapshot.error}'));
             else
-              return Center(
-                child: Scaffold(body: Center(
-                child: ListView(
+              return Scaffold(
+              body:Row(
+                children: <Widget>[
+                Center(
+                  child: ListView(
                           children: snapshot.data.map((seller) {
                           return SellerListTiles.getTile(seller);
                         }).toList()
                       ),
                     )
-                  )
-                );
+                ], 
+                ));
               }
       },
     );

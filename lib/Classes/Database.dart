@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:firebase/firebase.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase/firestore.dart' as fs;
 
 class DataBase{
-  final firestore = Firestore.instance;
+  fs.Firestore store;
+  DataBase() {
+    store = firestore();
+  }
   add(){
-    firestore.collection('messages').add({
+    store.collection('messages').add({
                         'text': "TEST WEB MESSAGE",
                         'value': 2,
                       });

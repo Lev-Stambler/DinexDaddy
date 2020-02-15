@@ -116,7 +116,7 @@ class _Sell extends State {
                 ToggleButtons(
                 children: [
                   Icon(Icons.attach_money),
-                  Icon(Icons.add_box),
+                  Icon(Icons.fastfood),
                 ],
                 isSelected: _selections,
                 
@@ -162,19 +162,22 @@ class _Sell extends State {
 showAlertDialog(BuildContext context) {
 
   // set up the button
-  Widget okButton = FlatButton(
-    child: Text("OK"),
-    onPressed: () { },
-  );
+Widget okButton = FlatButton(
+  child: Text("OK"),
+  onPressed: () {
+    Navigator.pop(context);
+   },
+);
 
-  // set up the AlertDialog
-  AlertDialog alert = AlertDialog(
-    title: Text("Confirmation"),
-    content: Text("Congrats! You are now a listed seller"),
-    actions: [
-      okButton,
-    ],
-  );
+// set up the AlertDialog
+AlertDialog alert = AlertDialog(
+  title: Text("Confirmation"),
+  content: Text("Congrats! You are now a listed seller"),
+  actions: [
+    okButton,
+  ],
+  
+);
 
   // show the dialog
   showDialog(

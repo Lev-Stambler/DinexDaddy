@@ -29,7 +29,7 @@ class SellerListTiles{
                             Text("Email: ${input.email}"),
                             Text("Time Start: ${input.availableStart}"),
                             Text("Time End: ${input.availableEnd}"),
-                            Text("Price: ${input.price}"),
+                            Text("Price ${input.typeSell == 'Block' ? 'per block' : 'per \$5 of Dinex'}: ${input.price}"),
                           ],
                         ),
                       ],

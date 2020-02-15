@@ -10,10 +10,10 @@ class BuyerMatch extends StatelessWidget {
       body: Center(
         child: RaisedButton(
           onPressed: () {
-            Navigator.pushNamed(context, '/buy');
+            Navigator.pushNamed(context, '/final');
             // Navigate back to first screen when tapped.
           },
-          child: Text('Back'),
+          child: Text('Confirm'),
         ),
       ),
     );

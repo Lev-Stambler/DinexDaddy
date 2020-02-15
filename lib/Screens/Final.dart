@@ -20,9 +20,9 @@ class Final extends StatelessWidget {
             ),
             RaisedButton(
               onPressed: () {
-                //Navigator.pushNamed(context, '/sell');
+                Navigator.pushNamed(context, '/buy-or-sell');
               },
-              child: Text('Confirm'),
+              child: Text('Home'),
             )
           ],
         ) 

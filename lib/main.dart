@@ -16,6 +16,7 @@ class App extends StatelessWidget {
       routes: {
         '/buy': (context) => Buy(),
         '/buyer-match': (context) => BuyerMatch(),
+        '/buy-or-sell': (context) => BuyOrSell(),
         '/sell': (context) => Sell(),
         '/final': (context) => Final()
       },

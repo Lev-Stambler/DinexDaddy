@@ -7,11 +7,13 @@ class DataBase{
   DataBase() {
     store = firestore();
   }
-  add(){
-    store.collection('messages').add({
-                        'text': "TEST WEB MESSAGE",
-                        'value': 2,
-                      });
+  addSeller(String email, String name, DateTime availableStart, DateTime availableEnd){
+    store.collection('sellers').add({
+      email,
+      name,
+      availableEnd,
+      availableStart
+    });
   }
 
 }

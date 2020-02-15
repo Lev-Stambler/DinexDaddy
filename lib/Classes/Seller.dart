@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Seller {
   String name;
   String email;

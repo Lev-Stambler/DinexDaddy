@@ -9,8 +9,6 @@ import 'package:DinexDaddy/Screens/Final.dart';
 import 'package:flutter/material.dart';
 
 void main(){
-  // App fb;
-  // if (fb.apps.isEmpty) { 
   initializeApp(
     apiKey: "AIzaSyAxw_7z41zoY9xN75GdwCqbDe3jHMtXEu0",
     authDomain: "dinex-daddy.firebaseapp.com",
@@ -21,9 +19,8 @@ void main(){
     appId: "1:707208204964:web:7e743e72f83bd19d9e8c31",
     measurementId: "G-DX3TLK7HQ8"
   );
-  final DataBase db = DataBase();
-  db.add();
-  // }
+  // final DataBase db = DataBase();
+  // db.add();
   runApp(App(
   ));
 }

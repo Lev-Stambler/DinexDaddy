@@ -2,6 +2,7 @@ import 'package:DinexDaddy/Classes/Database.dart';
 import 'package:DinexDaddy/Screens/Buy.dart';
 import 'package:DinexDaddy/Screens/BuyOrSell.dart';
 import 'package:DinexDaddy/Screens/BuyerMatch.dart';
+import 'package:DinexDaddy/Screens/FeedbackForm.dart';
 import 'package:DinexDaddy/Screens/Sell.dart';
 import 'package:firebase/firebase.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -33,6 +34,7 @@ class App extends StatelessWidget {
       routes: {
         // '/buy': (context) => Buy(),
         '/buy': (context) => BuyerMatch(),
+        '/feedback': (context) => FeedbackForm(),
       },
       title: 'Flutter Demo',
       theme: ThemeData(

@@ -48,14 +48,15 @@ class _BuyerMatch extends State {
               return Center(child: Text('Error: ${snapshot.error}'));
             else
               return Center(
-                  child: Column(
-
-                          children: snapshot.data.map((seller) {
-                            print(seller.typeSell);
-                          return SellerListTiles.getTile(seller);
-                        }).toList()
-                      ),
-                    );
+                child: ListView(
+                shrinkWrap: true,
+                padding: EdgeInsets.all(15.0),
+                children: snapshot.data.map((seller) {
+                  print(seller.typeSell);
+                  return SellerListTiles.getTile(seller);
+                }).toList()
+              ),
+            );
           }
       }
       )

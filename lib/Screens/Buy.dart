@@ -37,94 +37,97 @@ class Buy extends StatefulWidget {
         backgroundColor: PrimaryColor,
       ),
       body: Center(
+        child: Container (
+          width: 400.0,
         
-          child: Column (
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget> [
-          Container(
-              height: 180,
-              width: 180,
-              child: Image.asset('lib/images/logo.png'),
-              padding: EdgeInsets.only(bottom: 50),
-              ),  
-          DropdownButton<String>(
-            value: dropdownValue,
-            icon: Icon(Icons.place),
-            iconSize: 24,
-            elevation: 16,
-            style: TextStyle(
-              color: PrimaryColor
+            child: ListView (
+              shrinkWrap: true,
+              padding: EdgeInsets.all(15.0),
+            children: <Widget> [
+            Container(
+                height: 180,
+                width: 180,
+                child: Image.asset('lib/images/logo.png'),
+                padding: EdgeInsets.only(bottom: 50),
+                ),  
+            DropdownButton<String>(
+              value: dropdownValue,
+              icon: Icon(Icons.place),
+              iconSize: 24,
+              elevation: 16,
+              style: TextStyle(
+                color: PrimaryColor
+              ),
+              underline: Container(
+                height: 2,
+                color: PrimaryColor,
+              ),
+              onChanged: (String newValue) {
+                setState(() {
+                  dropdownValue = newValue;
+                });
+              },
+              items: <String>['(No Preference)','CUC', 'Tepper', 'Resnik', 'Entropy','UG', 'Wean', 'NSH', 'Posner']
+                .map<DropdownMenuItem<String>>((String _value) {
+                  return DropdownMenuItem<String>(
+                    value: _value,
+                    child: Text(_value),
+                  );
+                })
+                .toList(),
             ),
-            underline: Container(
-              height: 2,
-              color: PrimaryColor,
+            Text("Choose your preferred time range:"),
+            RangeSlider(
+              values: selectedRange,
+              min: 0,
+              max: 24,
+              labels: RangeLabels("${selectedRange.start}:00","${selectedRange.end}:00"),
+              onChanged: (RangeValues newRange) {
+                setState(() {
+                  selectedRange = newRange;
+                  availbleStart = new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day,
+                                              selectedRange.start.round());
+                  availbleEnd = new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day,
+                                              selectedRange.end.round());
+                });
+              },
+              divisions: 24,
             ),
-            onChanged: (String newValue) {
-              setState(() {
-                dropdownValue = newValue;
-              });
-            },
-            items: <String>['(No Preference)','CUC', 'Tepper', 'Resnik', 'Entropy','UG', 'Wean', 'NSH', 'Posner']
-              .map<DropdownMenuItem<String>>((String _value) {
-                return DropdownMenuItem<String>(
-                  value: _value,
-                  child: Text(_value),
-                );
-              })
-              .toList(),
+            Column(children: <Widget>[
+                    Text("Select either Dinex or Blocks to buy"),
+                    ToggleButtons(
+                    children: [
+                      Icon(Icons.attach_money),
+                      Icon(Icons.fastfood),
+                    ],
+                    isSelected: _selections,
+                    
+                    onPressed: (int index) {
+                      setState(() {
+                        selectType = index == 0 ? "Dinex" : "Block";
+                        for (int buttonIndex = 0; buttonIndex < _selections.length; buttonIndex++) {
+                          if (buttonIndex == index) {
+                          _selections[buttonIndex] = !_selections[buttonIndex];
+                          } else {
+                            _selections[buttonIndex] = false;
+                          }
+                        } 
+                      });
+                    }
+                  ),
+                  ],),
+            RaisedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => BuyerMatch(availbleStart, availbleEnd, dropdownValue, selectType)
+                ));
+                // Navigate back to confirm transaction
+              },
+              child: Text('Submit'),
+            ),
+            ]
           ),
-          Text("Choose your preferred time range:"),
-          RangeSlider(
-            values: selectedRange,
-            min: 0,
-            max: 24,
-            labels: RangeLabels("${selectedRange.start}:00","${selectedRange.end}:00"),
-            onChanged: (RangeValues newRange) {
-              setState(() {
-                selectedRange = newRange;
-                availbleStart = new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day,
-                                            selectedRange.start.round());
-                availbleEnd = new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day,
-                                            selectedRange.end.round());
-              });
-            },
-            divisions: 24,
-          ),
-          Column(children: <Widget>[
-                  Text("Select either Dinex or Blocks to buy"),
-                  ToggleButtons(
-                  children: [
-                    Icon(Icons.attach_money),
-                    Icon(Icons.fastfood),
-                  ],
-                  isSelected: _selections,
-                  
-                  onPressed: (int index) {
-                    setState(() {
-                      selectType = index == 0 ? "Dinex" : "Block";
-                      for (int buttonIndex = 0; buttonIndex < _selections.length; buttonIndex++) {
-                        if (buttonIndex == index) {
-                        _selections[buttonIndex] = !_selections[buttonIndex];
-                        } else {
-                          _selections[buttonIndex] = false;
-                        }
-                      } 
-                    });
-                  }
-                ),
-                ],),
-          RaisedButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) => BuyerMatch(availbleStart, availbleEnd, dropdownValue, selectType)
-              ));
-              // Navigate back to confirm transaction
-            },
-            child: Text('Submit'),
-          ),
-          ]
-        ),
+        )
     ));
   } 
 }

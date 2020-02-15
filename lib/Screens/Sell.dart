@@ -55,17 +55,19 @@ class _Sell extends State {
       body: Container(
         child: Center(
           child: 
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        ListView(
+          shrinkWrap: true,
+          padding: EdgeInsets.all(15.0),
+          // mainAxisAlignment: MainAxisAlignment.center,
+          // crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
               Container(
-              height: 100,
-              width: 100,
+              height: 150,
+              width: 150,
               child: Image.asset('lib/images/logo.png'),
               padding: EdgeInsets.only(bottom: 50),
               ),    

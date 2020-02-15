@@ -47,6 +47,12 @@ class _Sell extends State {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
+              Container(
+              height: 180,
+              width: 180,
+              child: Image.asset('lib/images/logo.png'),
+              padding: EdgeInsets.only(bottom: 50),
+              ),    
               new Container(
                 width: 300.0,
                 margin: const EdgeInsets.only(top: 20.0, bottom: 20.0),

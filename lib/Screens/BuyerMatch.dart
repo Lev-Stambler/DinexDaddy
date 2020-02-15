@@ -8,18 +8,19 @@ class BuyerMatch extends StatefulWidget {
   DateTime startTime;
   DateTime endTime;
   String location;
+  String blockType;
 
-  BuyerMatch(this.startTime, this.endTime, this.location);
+  BuyerMatch(this.startTime, this.endTime, this.location, this.blockType);
   @override
   _BuyerMatch createState() {
-    return _BuyerMatch(startTime, endTime, location);
+    return _BuyerMatch(startTime, endTime, location, blockType);
   }
 }
 class _BuyerMatch extends State {
   DataBase db = DataBase();
   DateTime startTime;
   DateTime endTime;
-  String blockType = "Block";
+  String blockType;
   String location = "(No Preference)";
   List<Seller> Sellers = [];
 
@@ -28,7 +29,7 @@ class _BuyerMatch extends State {
     return Sellers;
   }
 
-  _BuyerMatch(this.startTime, this.endTime, this.location);
+  _BuyerMatch(this.startTime, this.endTime, this.location, this.blockType);
   @override
   Widget build(BuildContext context) {
     Color PrimaryColor = const Color(0xFFB71C1C);
@@ -47,8 +48,12 @@ class _BuyerMatch extends State {
               return Center(child: Text('Error: ${snapshot.error}'));
             else
               return Center(
-                  child: ListView(
+                  child: Column(
+
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
                           children: snapshot.data.map((seller) {
+                            print(seller.typeSell);
                           return SellerListTiles.getTile(seller);
                         }).toList()
                       ),

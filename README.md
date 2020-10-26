@@ -16,3 +16,5 @@ plan. However, since the dining credit system does not allow for the electronic
 transfer of funds, students have to meet up in person to "swipe" one another in.
 This app is designed to facilitate that process, matching buyers to sellers
 based on personal availability and listed price.
+
+Find a demo [here]()

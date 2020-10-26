@@ -163,8 +163,8 @@ class _Sell extends State {
                                                      selectedRange.end.round());
                         });
                       },
-                      semanticFormatterCallback: (RangeValues rangeValues) {
-                        return '${rangeValues.start.round()} - ${rangeValues.end.round()}  dollars';
+                      semanticFormatterCallback: (double val) {
+                        return '${val} dollars';
                       },
                       divisions: 24,
                           ),

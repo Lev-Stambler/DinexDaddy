@@ -30,7 +30,7 @@ class _FeedbackForm extends State<FeedbackForm> {
                   ),  
                 SmoothStarRating(
                   allowHalfRating: true,
-                  onRatingChanged: (v) {
+                  onRated: (v) {
                     rating = v;
                     setState(() {});
                   },
